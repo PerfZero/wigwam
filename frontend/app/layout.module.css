@@ -1,0 +1,3 @@
+.layout__main {
+    padding: calc(var(--header-height) + 32px) 0 64px;
+}

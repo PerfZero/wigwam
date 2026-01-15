@@ -1,0 +1,136 @@
+.navBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    right: 0;
+    z-index: 10;
+    backdrop-filter: blur(8px);
+    background: rgba(30, 8, 2, 0.6);
+}
+
+.navBar__separator {
+    height: 1px;
+    background-color: #ffffff30;
+}
+
+.navBar__container {
+    max-width: 1200px;
+    margin: 24px auto 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.navBar__top {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 16px 0 10px;
+}
+
+.navBar__bottomInner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 0;
+    flex-wrap: wrap;
+}
+
+.navBar__logo {
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+}
+
+.navBar__logoImage {
+    display: block;
+    height: 50px;
+    width: auto;
+}
+
+.navBar__nav {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    line-height: 175%;
+    gap: 40px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    width: 100%;
+    color: #f2ede0;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.navBar__topNav {
+    max-width: 450px;
+}
+
+.navBar__navLink {
+    padding: 6px 0;
+    border-radius: 12px;
+}
+
+.navBar__navLink:hover {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
+.navBar__actions {
+    display: flex;
+    align-items: center;
+    width: 450px;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.ui__iconButton {
+    border: 0.5px solid #fff;
+    padding: 8px;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBar__label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+}
+
+.navBar__bottomNav {
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.navBar__bottomLink {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 200%;
+    text-align: center;
+    color: #f2ede0;
+    text-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 760px) {
+    .navBar__topNav {
+        display: none;
+    }
+
+    .navBar__top {
+        grid-template-columns: 1fr auto;
+    }
+}
