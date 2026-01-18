@@ -20,7 +20,7 @@
     position: absolute;
     height: 100vh;
     inset: 0;
-    background-image: url("/img/about.png");
+    background-image: url("/img/about.webp");
     background-size: cover;
     background-position: center;
     transform: scale(1.02);
@@ -294,7 +294,7 @@
 }
 
 .section_down {
-    background-image: url("/img/about.png");
+    background-image: url("/img/about.webp");
     height: 720px;
     background-size: cover;
     display: flex;

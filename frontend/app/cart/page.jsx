@@ -77,7 +77,7 @@ export default function CartPage() {
 
   const normalizeImageUrl = (url) => {
     if (!url) {
-      return "/img/hero.png";
+      return "/img/hero.webp";
     }
     return url.replace(/^http:\/\/backend:8000/, publicBase);
   };

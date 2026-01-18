@@ -171,7 +171,7 @@ export default function MiniCart() {
                         <div className={styles.miniCart__itemMedia}>
                           <img
                             className={styles.miniCart__itemImage}
-                            src={item.product?.image_url || "/img/hero.png"}
+                            src={item.product?.image_url || "/img/hero.webp"}
                             alt={item.product?.name || "Товар"}
                           />
                         </div>

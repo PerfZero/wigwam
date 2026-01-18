@@ -67,7 +67,7 @@ export default function AboutPage() {
               <div className={styles.assortmentCard}>
                 <img
                   className={styles.assortmentImage}
-                  src="/img/about_1.png"
+                  src="/img/about_1.webp"
                   alt="Сигары и сигариллы"
                 />
                 <p className={styles.assortmentCaption}>Сигары и сигариллы</p>
@@ -75,7 +75,7 @@ export default function AboutPage() {
               <div className={styles.assortmentCard}>
                 <img
                   className={styles.assortmentImage}
-                  src="/img/about_2.png"
+                  src="/img/about_2.webp"
                   alt="Трубочный табак"
                 />
                 <p className={styles.assortmentCaption}>Трубочный табак</p>
@@ -83,7 +83,7 @@ export default function AboutPage() {
               <div className={styles.assortmentCard}>
                 <img
                   className={styles.assortmentImage}
-                  src="/img/about_3.png"
+                  src="/img/about_3.webp"
                   alt="Самокруточные смеси"
                 />
                 <p className={styles.assortmentCaption}>Самокруточные смеси</p>
@@ -91,7 +91,7 @@ export default function AboutPage() {
               <div className={styles.assortmentCard}>
                 <img
                   className={styles.assortmentImage}
-                  src="/img/about_4.png"
+                  src="/img/about_4.webp"
                   alt="Редкие и интересные сигареты"
                 />
                 <p className={styles.assortmentCaption}>
@@ -113,7 +113,7 @@ export default function AboutPage() {
               <div className={styles.benefitCard}>
                 <img
                   className={styles.benefitImage}
-                  src="/img/benefit_1.png"
+                  src="/img/benefit_1.webp"
                   alt="Осознанный отбор"
                 />
                 <div className={styles.benefitContent}>
@@ -127,7 +127,7 @@ export default function AboutPage() {
               <div className={styles.benefitCard}>
                 <img
                   className={styles.benefitImage}
-                  src="/img/benefit_2.png"
+                  src="/img/benefit_2.webp"
                   alt="Правильное хранение"
                 />
                 <div className={styles.benefitContent}>
@@ -142,7 +142,7 @@ export default function AboutPage() {
               <div className={styles.benefitCard}>
                 <img
                   className={styles.benefitImage}
-                  src="/img/benefit_3.png"
+                  src="/img/benefit_3.webp"
                   alt="Экспертные консультации"
                 />
                 <div className={styles.benefitContent}>
@@ -158,7 +158,7 @@ export default function AboutPage() {
               <div className={styles.benefitCard}>
                 <img
                   className={styles.benefitImage}
-                  src="/img/benefit_4.png"
+                  src="/img/benefit_4.webp"
                   alt="Глубина выбора"
                 />
                 <div className={styles.benefitContent}>

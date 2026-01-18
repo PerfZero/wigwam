@@ -7,21 +7,21 @@ export default function CheckoutProcess() {
   const steps = [
     {
       number: 1,
-      image: "./img/step_1.png",
+      image: "./img/step_1.webp",
       title: "Выбор продукции",
       description:
         "Изучите отобранный ассортимент табачной продукции и аксессуаров",
     },
     {
       number: 2,
-      image: "./img/step_2.png",
+      image: "./img/step_2.webp",
       title: "Подтверждение",
       description:
         "Добавьте товары в корзину и подтвердите заказ через WhatsApp",
     },
     {
       number: 3,
-      image: "./img/step_3.png",
+      image: "./img/step_3.webp",
       title: "Завершение",
       description: "Удалённая оплата и доставка в кратчайшие сроки",
     },
