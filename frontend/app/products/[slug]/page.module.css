@@ -1,0 +1,406 @@
+.page {
+    background: #fcfbf7;
+    color: #492516;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f2ede0;
+    border-bottom: 1px solid rgba(168, 135, 71, 0.5);
+    padding: 16px 120px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+    color: #7a5b42;
+    margin-bottom: 40px;
+}
+
+.breadcrumbs a {
+    color: inherit;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: #492516;
+    text-decoration: none;
+}
+
+.breadcrumbs .container {
+    align-items: center;
+    gap: 8px;
+    display: flex;
+    width: 100%;
+
+    justify-content: flex-start;
+}
+
+.breadcrumbs span {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: rgba(73, 37, 22, 0.5);
+}
+
+.breadcrumbsDivider {
+    color: #a48a72;
+}
+
+.product {
+    display: grid;
+    grid-template-columns: 596px minmax(0, 0.9fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 16px;
+    align-items: start;
+}
+
+.thumbs {
+    position: relative;
+}
+
+.thumbsSwiper {
+    height: 460px;
+}
+
+.thumbButton {
+    border: 0.83px solid rgba(168, 135, 71, 0.15);
+    border-radius: 7px;
+    background: #ffffff;
+    padding: 6px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.thumbImage {
+    display: block;
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+}
+
+.thumbPlaceholder {
+    width: 100%;
+    height: 100px;
+}
+
+.mainImageWrapper {
+    background: #ffffff;
+    border: 0.83px solid rgba(168, 135, 71, 0.15);
+    border-radius: 13px;
+    padding: 24px;
+    min-height: 420px;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.mainSwiper {
+    width: 100%;
+}
+
+.mainSlide {
+    display: grid;
+    place-items: center;
+}
+
+.mainImage {
+    width: 100%;
+    max-height: 520px;
+    object-fit: contain;
+}
+
+.mainPlaceholder {
+    width: 100%;
+    height: 320px;
+}
+
+.mainNavButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(73, 37, 22, 0.25);
+    background: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.mainNavPrev {
+    left: 12px;
+}
+
+.mainNavNext {
+    right: 12px;
+}
+
+.mainNavPrev svg {
+    transform: rotate(180deg);
+}
+
+.info {
+    display: grid;
+    gap: 16px;
+}
+
+.brand {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.title {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 138%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #492516;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+}
+
+.stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+}
+
+.reviewLink {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #492516;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.price span {
+    font-family: "SF Pro Display", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 267%;
+    text-align: center;
+    color: #a88747;
+    position: relative;
+    top: -5px;
+}
+
+.reviewCount {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(73, 37, 22, 0.5);
+}
+
+.price {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #a88747;
+}
+
+.purchase {
+    display: grid;
+    gap: 18px;
+    margin-top: 4px;
+}
+
+.purchaseTop {
+    display: flex;
+    gap: 16px;
+    align-items: start;
+}
+
+.quantityBlock {
+    display: grid;
+    gap: 8px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+}
+
+.quantityLabel {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: #492516;
+}
+
+.quantityControl {
+    display: grid;
+    grid-template-columns: repeat(2, 48px);
+    gap: 10px;
+}
+
+.quantityButton {
+    width: 45px;
+    height: 24px;
+    border: 0.5px solid #492516;
+
+    background: transparent;
+    cursor: pointer;
+    font-size: 8px;
+    color: #492516;
+}
+
+.quantityHint {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    color: rgba(73, 37, 22, 0.5);
+}
+
+.actions {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+}
+
+.addToCart {
+    padding: 16px 32px;
+
+    background: #a88747;
+    height: 48px !important;
+    width: 100% !important;
+    border-radius: 0px;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: #fff;
+}
+
+.buyNow {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: #492516;
+    border: 1px solid #492516;
+    padding: 16px 32px;
+}
+
+.details {
+    margin-top: 32px;
+}
+
+.detailsItem {
+    border-bottom: 1px solid rgba(73, 37, 22, 0.2);
+    padding: 16px 0;
+}
+
+.detailsSummary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    font-variant: all-small-caps;
+    color: #492516;
+}
+
+.detailsBody {
+    margin-top: 12px;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 143%;
+    font-variant: all-small-caps;
+    color: #492516;
+    line-height: 160%;
+    color: #4d3326;
+}
+
+.reviewItem {
+    border-bottom: 1px solid rgba(73, 37, 22, 0.1);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+.reviewTitle {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.reviewMeta {
+    font-size: 12px;
+    color: #8b6b53;
+    margin-bottom: 6px;
+}
+
+.specList {
+    display: grid;
+    gap: 8px;
+}
+
+.specRow {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 12px;
+}
+
+.emptyState {
+    padding: 40px 0;
+    text-align: center;
+    font-family: "Tenor Sans", sans-serif;
+}
+
+@media (max-width: 900px) {
+    .product {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .thumbs {
+        width: 100%;
+    }
+
+    .thumbsSwiper {
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .thumbsSwiper {
+        height: auto;
+    }
+
+    .specRow {
+        grid-template-columns: 1fr;
+    }
+}

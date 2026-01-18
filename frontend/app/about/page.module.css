@@ -1,0 +1,378 @@
+.home {
+    display: grid;
+}
+
+.hero__arrow {
+    margin-top: 20px;
+    animation: heroArrowPulse 1.8s ease-in-out infinite;
+}
+
+.hero {
+    position: relative;
+    min-height: calc(100vh - 150px);
+
+    display: grid;
+    align-items: flex-end;
+    overflow: hidden;
+}
+
+.hero__media {
+    position: absolute;
+    height: 100vh;
+    inset: 0;
+    background-image: url("/img/about.png");
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.02);
+}
+
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(30, 8, 2, 0) 24.78%,
+        rgba(30, 8, 2, 0.8) 80%
+    );
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    padding: 56px 0 64px;
+    color: #f8f5ef;
+    text-align: center;
+}
+
+.hero__main {
+    display: grid;
+    justify-items: center;
+    gap: 24px;
+}
+
+.hero__title {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 129%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #f2ede0;
+}
+
+.hero__lead {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    width: 645px;
+    margin: 24px auto;
+    font-size: 24px;
+    line-height: 117%;
+    text-align: center;
+    color: #f2ede0;
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.hero__button {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #000;
+    border-radius: 0;
+    padding: 16px 32px;
+
+    background: #f2ede0;
+}
+
+.hero__arrowButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.hero__arrowButtonLeft {
+    left: 32px;
+}
+
+.hero__arrowButtonRight {
+    right: 32px;
+}
+
+.hero__arrowButtonLeft svg {
+    transform: rotate(90deg);
+}
+
+.hero__arrowButtonRight svg {
+    transform: rotate(-90deg);
+}
+
+.hero__mediaSlide {
+    opacity: 0;
+    transition: opacity 800ms ease;
+}
+
+.hero__mediaActive {
+    opacity: 1;
+}
+
+.hero__textFade {
+    animation: heroFadeIn 800ms ease;
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroArrowPulse {
+    0% {
+        transform: translateY(0);
+        opacity: 0.75;
+    }
+    45% {
+        transform: translateY(8px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 0.75;
+    }
+}
+
+.sectionTitle {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 700;
+    text-align: left;
+    font-size: 32px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #492516;
+    margin-bottom: 12px;
+}
+
+.page {
+    display: grid;
+    gap: 40px;
+    padding: 48px 0 0;
+    background: #f4ede3;
+    color: #2b1a14;
+}
+
+.section {
+    display: grid;
+    gap: 16px;
+}
+
+.sectionText {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    font-variant: all-small-caps;
+    color: #492516;
+}
+
+.standaloneQuote {
+    font-family: "Playfair Display", sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    font-variant: all-small-caps;
+    color: #492516;
+}
+
+.assortmentGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 24px;
+}
+
+.assortmentCard {
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+}
+
+.assortmentCaption {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    font-variant: all-small-caps;
+    text-align: center;
+    color: #492516;
+}
+
+.assortmentQuote {
+    font-family: "Playfair Display", sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    font-variant: all-small-caps;
+    color: #492516;
+}
+
+.benefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.benefitCard {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.benefitImage {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.benefitContent {
+    display: grid;
+    gap: 6px;
+}
+
+.benefitTitle {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    font-variant: all-small-caps;
+    color: #492516;
+}
+
+.benefitText {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    font-variant: all-small-caps;
+    color: #492516;
+}
+
+.quoteCard {
+    display: grid;
+    gap: 10px;
+}
+
+.quoteLead {
+    font-family: "Playfair Display", sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    font-variant: all-small-caps;
+    color: #492516;
+}
+
+.quoteText {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    font-variant: all-small-caps;
+    color: #492516;
+}
+
+.section_down {
+    background-image: url("/img/about.png");
+    height: 720px;
+    background-size: cover;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: -40px;
+    align-items: flex-end;
+    background-position: center;
+}
+
+.hero_down {
+    width: 100%;
+}
+
+.hero__content_down {
+    backdrop-filter: blur(34.20000076293945px);
+    background: rgba(30, 8, 2, 0.3);
+    padding: 60px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero__title_down {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 138%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    color: #f2ede0;
+}
+
+.hero__text_down {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    max-width: 1280px;
+    font-size: 24px;
+    font-variant: all-small-caps;
+    text-align: center;
+    color: #f2ede0;
+    margin: 16px auto 40px;
+}
+
+.hero__button_down {
+    padding: 16px 32px;
+    background: #f2ede0;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    color: #000;
+}
+
+@media (max-width: 900px) {
+    .assortmentGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .hero__content {
+        padding: 40px 0 48px;
+    }
+
+    .assortmentGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefitsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .benefitCard {
+        flex-direction: column;
+        justify-items: center;
+        text-align: center;
+    }
+}

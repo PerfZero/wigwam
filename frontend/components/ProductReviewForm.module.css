@@ -1,0 +1,145 @@
+.review {
+    display: grid;
+    gap: 20px;
+}
+
+.review__rating {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.review__label {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    font-variant: normal;
+    color: #492516;
+}
+
+.review__stars {
+    display: flex;
+    gap: 6px;
+}
+
+.review__star {
+    color: rgba(73, 37, 22, 0.3);
+    transition: color 0.2s ease;
+}
+
+.review__starActive {
+    color: #492516;
+}
+
+.review__fields {
+    display: grid;
+    gap: 16px;
+}
+
+.review__input,
+.review__textarea {
+    border: 0.5px solid #492516;
+    padding: 0px 12px;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 200%;
+    height: 32px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    color: rgba(73, 37, 22, 0.5);
+}
+
+.review__textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.review__actions {
+    display: grid;
+    gap: 12px;
+}
+
+.review__primary,
+.review__secondary {
+    border: 1px solid #492516;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+}
+
+.review__primary {
+    border: 1px solid #492516;
+    color: #492516;
+    background: transparent;
+}
+
+.review__secondary {
+    background: #a88747;
+    color: #fff;
+    border: 1px solid #a88747;
+}
+
+.review__hint {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.review__modalOverlay {
+    position: fixed;
+    inset: 0;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background: rgba(73, 37, 22, 0.2);
+    display: grid;
+    place-items: center;
+    z-index: 950;
+}
+
+.review__modal {
+    width: min(480px, 90vw);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 40px;
+
+    display: grid;
+    gap: 16px;
+    text-align: center;
+}
+
+.review__modalTitle {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    color: #492516;
+}
+
+.review__modalText {
+    font-family: "Tenor Sans", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+    color: #492516;
+}
+
+.review__modalButton {
+    padding: 8px 16px;
+    margin: 0 auto;
+    background: #a88747;
+    width: fit-content;
+    border: 1px solid #a88747;
+    color: #fff;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 16px;
+}
