@@ -9,8 +9,7 @@
 }
 
 .ui__section {
-    display: grid;
-    gap: 16px;
+    margin: 40px auto;
 }
 
 .ui__sectionHead {
@@ -25,9 +24,8 @@
 }
 
 .ui__grid {
-    display: grid;
+    display: flex;
     gap: 40px;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
 .ui__gridTwo {

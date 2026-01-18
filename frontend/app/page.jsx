@@ -3,6 +3,12 @@ import { apiUrl } from "../lib/api";
 import CategoryGrid from "../components/CategoryGrid";
 import HeroSlider from "../components/HeroSlider";
 import ProductCard from "../components/ProductCard";
+import CheckoutProcess from "../components/CheckoutProcess";
+import TobaccoHistory from "../components/TobaccoHistory";
+import WigWamCompany from "../components/WigWamCompany";
+import Bestsellers from "../components/Bestsellers";
+import BestBrands from "../components/BestBrands";
+import NewArrivals from "../components/NewArrivals";
 import styles from "./page.module.css";
 import ui from "../styles/ui.module.css";
 
@@ -61,6 +67,13 @@ export default async function Home() {
           )}
         </section>
       </div>
+
+      <CheckoutProcess />
+      <TobaccoHistory />
+      {/* <WigWamCompany />*/}
+      <Bestsellers />
+      <BestBrands />
+      <NewArrivals />
     </div>
   );
 }

@@ -92,7 +92,29 @@ class Document(models.Model):
         return self.title
 
 
+class FAQCategory(models.Model):
+    name = models.CharField(max_length=120, verbose_name='Название')
+    slug = models.SlugField(unique=True, verbose_name='Слаг')
+    order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
+
+    class Meta:
+        ordering = ['order', 'name']
+        verbose_name = 'Категория FAQ'
+        verbose_name_plural = 'Категории FAQ'
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class FAQ(models.Model):
+    category = models.ForeignKey(
+        FAQCategory,
+        on_delete=models.SET_NULL,
+        related_name='faqs',
+        null=True,
+        blank=True,
+        verbose_name='Категория',
+    )
     question = models.CharField(max_length=255, verbose_name='Вопрос')
     answer = models.TextField(verbose_name='Ответ')
     order = models.PositiveIntegerField(default=0, verbose_name='Порядок')

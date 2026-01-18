@@ -1,5 +1,8 @@
 import { apiUrl } from "../../lib/api";
-import ui from "../../styles/ui.module.css";
+import FaqClient from "./FaqClient";
+import styles from "./page.module.css";
+import NewArrivals from "../../components/NewArrivals";
+import BestSellers from "../../components/Bestsellers";
 
 export const dynamic = "force-dynamic";
 
@@ -8,25 +11,27 @@ async function getFaq() {
     next: { revalidate: 60 },
   });
   if (!response.ok) {
-    return [];
+    return { results: [], categories: [] };
   }
   const data = await response.json();
-  return data.results || [];
+  return {
+    results: data.results || [],
+    categories: data.categories || [],
+  };
 }
 
 export default async function FaqPage() {
-  const faq = await getFaq();
+  const { results, categories } = await getFaq();
 
   return (
-    <div className={`${ui.ui__container} ${ui.ui__stack}`}>
-      <h1>FAQ</h1>
-      {faq.length === 0 && <p>Раздел пока пустой.</p>}
-      {faq.map((item) => (
-        <div key={item.id} className={ui.ui__card}>
-          <h3>{item.question}</h3>
-          <p>{item.answer}</p>
-        </div>
-      ))}
+    <div className={styles.page}>
+      <div className={styles.container}>
+        <h1 className={styles.title}>Часто задаваемые вопросы</h1>
+        <FaqClient faq={results} categories={categories} />
+      </div>
+      <BestSellers />
+
+      <NewArrivals />
     </div>
   );
 }

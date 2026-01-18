@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponseNotAllowed
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
-from .models import Category, Product, Review, Document, FAQ, Cart, CartItem
+from .models import Category, Product, Review, Document, FAQ, FAQCategory, Cart, CartItem
 
 
 def _json_response(payload, status=200):
@@ -192,15 +192,36 @@ def documents_list(request):
 def faq_list(request):
     if request.method != 'GET':
         return HttpResponseNotAllowed(['GET'])
+    queryset = FAQ.objects.select_related('category')
+    category_slug = request.GET.get('category')
+    if category_slug:
+        queryset = queryset.filter(category__slug=category_slug)
     faq_items = [
         {
             'id': item.id,
             'question': item.question,
             'answer': item.answer,
+            'category': {
+                'id': item.category.id,
+                'name': item.category.name,
+                'slug': item.category.slug,
+                'order': item.category.order,
+            }
+            if item.category
+            else None,
         }
-        for item in FAQ.objects.all()
+        for item in queryset
     ]
-    return _json_response({'results': faq_items})
+    categories = [
+        {
+            'id': category.id,
+            'name': category.name,
+            'slug': category.slug,
+            'order': category.order,
+        }
+        for category in FAQCategory.objects.all()
+    ]
+    return _json_response({'results': faq_items, 'categories': categories})
 
 
 @csrf_exempt

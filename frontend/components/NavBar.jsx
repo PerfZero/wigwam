@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import MiniCart from "./MiniCart";
 import { apiUrl } from "../lib/api";
 import styles from "./NavBar.module.css";
@@ -17,6 +18,8 @@ const topLinks = [
 
 export default function NavBar() {
   const [categories, setCategories] = useState([]);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     let isMounted = true;
@@ -42,7 +45,9 @@ export default function NavBar() {
   }, []);
 
   return (
-    <header className={styles.navBar}>
+    <header
+      className={`${styles.navBar} ${!isHomePage ? styles.navBarStatic : ""}`}
+    >
       <div className={`${ui.ui__container} ${styles.navBar__top}`}>
         <nav className={`${styles.navBar__nav} ${styles.navBar__topNav}`}>
           {topLinks.map((item) => (

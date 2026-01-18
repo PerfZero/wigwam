@@ -1,6 +1,5 @@
 .home {
     display: grid;
-    gap: 32px;
 }
 
 .hero__arrow {
@@ -10,9 +9,8 @@
 
 .hero {
     position: relative;
-    min-height: 100svh;
-    margin-top: calc(-1 * (var(--header-height) + 32px));
-    padding-top: calc(var(--header-height) + 32px);
+    min-height: 100vh;
+
     display: grid;
     align-items: flex-end;
     overflow: hidden;
@@ -20,6 +18,7 @@
 
 .hero__media {
     position: absolute;
+    height: 100vh;
     inset: 0;
     background-image: url("/img/hero.png");
     background-size: cover;

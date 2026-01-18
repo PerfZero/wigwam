@@ -1,7 +1,9 @@
 import "./globals.css";
+import "./reset.css";
 import NavBar from "../components/NavBar";
 import { Playfair_Display, Tenor_Sans } from "next/font/google";
 import styles from "./layout.module.css";
+import Footer from "../components/Footer";
 
 const playfair = Playfair_Display({
   subsets: ["latin", "cyrillic"],
@@ -26,6 +28,9 @@ export default function RootLayout({ children }) {
       <body className={`${playfair.variable} ${tenorSans.variable}`}>
         <NavBar />
         <main className={styles.layout__main}>{children}</main>
+        <footer className={styles.layout__footer}>
+          <Footer />
+        </footer>
       </body>
     </html>
   );

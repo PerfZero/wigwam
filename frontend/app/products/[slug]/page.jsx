@@ -1,18 +1,20 @@
 import Link from "next/link";
 import { apiUrl } from "../../../lib/api";
 import AddToCartButton from "../../../components/AddToCartButton";
-import ProductReviewForm from "../../../components/ProductReviewForm";
-import ui from "../../../styles/ui.module.css";
+import ReviewDrawer from "../../../components/ReviewDrawer";
+import ProductGallery from "./ProductGallery";
+import styles from "./page.module.css";
+import NewArrivals from "../../../components/NewArrivals";
+import Bestsellers from "../../../components/Bestsellers";
 
 export const dynamic = "force-dynamic";
+const publicBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 async function getProduct(slug) {
   const url = apiUrl(`/api/products/${slug}/`);
-  console.log("Fetching product from:", url);
   const response = await fetch(url, {
     next: { revalidate: 30 },
   });
-  console.log("Response status:", response.status);
   if (!response.ok) {
     return null;
   }
@@ -25,58 +27,171 @@ export default async function ProductPage({ params }) {
 
   if (!product) {
     return (
-      <div className={`${ui.ui__container} ${ui.ui__stack}`}>
-        <h1>Товар не найден</h1>
-        <Link className={ui.ui__textLink} href="/categories">
-          Вернуться в каталог
-        </Link>
+      <div className={styles.page}>
+        <div className={styles.container}>
+          <div className={styles.emptyState}>
+            <h1>Товар не найден</h1>
+            <Link href="/categories">Вернуться в каталог</Link>
+          </div>
+        </div>
       </div>
     );
   }
 
+  const imageUrl = product.image_url
+    ? product.image_url.replace(/^http:\/\/backend:8000/, publicBase)
+    : "";
+  const images = Array.from({ length: 4 }, () => imageUrl).filter(Boolean);
+  const reviewCount = product.reviews?.length || 0;
+  const averageRating = reviewCount
+    ? Math.round(
+        product.reviews.reduce((sum, review) => sum + review.rating, 0) /
+          reviewCount,
+      )
+    : 0;
+  const maxQuantity = product.stock ?? product.quantity ?? 400;
+  const stars = Array.from({ length: 5 }, (_, index) => (
+    <svg
+      key={`star-${index}`}
+      width="18"
+      height="17"
+      viewBox="0 0 18 17"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M3.42188 16.4375C3.10156 16.1953 3.03125 15.7969 3.22656 15.2266L4.85938 10.3672L0.6875 7.36719C0.203125 7.02344 0 6.66406 0.132812 6.27344C0.257812 5.89844 0.625 5.71875 1.22656 5.71875H6.34375L7.89844 0.867188C8.08594 0.289062 8.36719 0 8.76562 0C9.17188 0 9.45312 0.289062 9.64062 0.867188L11.1953 5.71875H16.3125C16.9141 5.71875 17.2812 5.89844 17.4062 6.27344C17.5312 6.66406 17.3359 7.02344 16.8516 7.36719L12.6797 10.3672L14.3125 15.2266C14.5078 15.7969 14.4375 16.1953 14.1172 16.4375C13.7891 16.6875 13.3906 16.6016 12.9062 16.25L8.76562 13.2109L4.63281 16.25C4.14844 16.6016 3.74219 16.6875 3.42188 16.4375Z"
+        fill="#492516"
+        fillOpacity={index < averageRating ? "1" : "0.25"}
+      />
+    </svg>
+  ));
+
   return (
-    <div className={`${ui.ui__container} ${ui.ui__stack}`}>
-      <div className={ui.ui__sectionHead}>
-        <div>
-          <p className={ui.ui__muted}>{product.category?.name}</p>
-          <h1>{product.name}</h1>
-        </div>
-        <Link className={ui.ui__textLink} href="/categories">
-          Каталог
-        </Link>
-      </div>
-
-      <div className={`${ui.ui__grid} ${ui.ui__gridTwo}`}>
-        <div className={ui.ui__card}>
-          <p className={ui.ui__price}>{product.price} ₸</p>
-          <p>{product.description || "Описание товара появится позже."}</p>
-          <AddToCartButton slug={product.slug} />
-        </div>
-        <div className={ui.ui__card}>
-          <h3>Доставка и оплата</h3>
-          <ul>
-            <li>Онлайн оплаты нет — подтверждаем заказ вручную.</li>
-            <li>Сроки доставки уточняем после заявки.</li>
-            <li>Чек и документы доступны на странице «Документы».</li>
-          </ul>
+    <div className={styles.page}>
+      <div className={styles.breadcrumbs}>
+        <div className={styles.container}>
+          <Link href={`/categories/${product.category?.slug || ""}`}>
+            {product.category?.name || "Категория"}
+          </Link>
+          <span className={styles.breadcrumbsDivider}>/</span>
+          <span>{product.name}</span>
         </div>
       </div>
+      <div className={styles.container}>
+        <div className={styles.product}>
+          <ProductGallery images={images} name={product.name} />
 
-      <section className={ui.ui__section}>
-        <h2>Отзывы</h2>
-        <div className={ui.ui__stack}>
-          {product.reviews?.length === 0 && <p>Пока нет отзывов.</p>}
-          {product.reviews?.map((review) => (
-            <div key={review.id} className={ui.ui__card}>
-              <strong>{review.name}</strong>
-              <p className={ui.ui__muted}>Оценка: {review.rating}/5</p>
-              <p>{review.text}</p>
+          <div className={styles.info}>
+            {product.brand && (
+              <div className={styles.brand}>{product.brand}</div>
+            )}
+            <h1 className={styles.title}>{product.name}</h1>
+            <div className={styles.rating}>
+              <span className={styles.stars}>{stars}</span>
+              <span className={styles.reviewCount}>
+                {reviewCount > 0 ? `Отзывов: ${reviewCount}` : "Отзывов нет"}
+              </span>
+              <ReviewDrawer className={styles.reviewLink} slug={product.slug}>
+                Оставить отзыв
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M11.0771 8C11.0771 8.12695 11.0283 8.23926 10.9355 8.33203L7.06836 12.1113C6.98047 12.1943 6.87305 12.2432 6.75098 12.2432C6.49707 12.2432 6.30176 12.0527 6.30176 11.7988C6.30176 11.6719 6.35059 11.5596 6.42871 11.4814L9.9834 8L6.42871 4.52344C6.35059 4.44043 6.30176 4.32812 6.30176 4.20605C6.30176 3.95215 6.49707 3.76172 6.75098 3.76172C6.87305 3.76172 6.98047 3.81055 7.06348 3.89355L10.9355 7.67285C11.0283 7.75586 11.0771 7.87793 11.0771 8Z"
+                    fill="#492516"
+                  />
+                </svg>
+              </ReviewDrawer>
             </div>
-          ))}
-        </div>
-      </section>
+            <div className={styles.price}>
+              {" "}
+              <span>₸</span> {product.price}{" "}
+            </div>
+            <div className={styles.purchase}>
+              <div className={styles.purchaseTop}>
+                <div className={styles.quantityBlock}>
+                  <div className={styles.quantityLabel}>
+                    Количество: <span>1</span>
+                  </div>
+                  <div className={styles.quantityControl}>
+                    <button className={styles.quantityButton} type="button">
+                      –
+                    </button>
+                    <button className={styles.quantityButton} type="button">
+                      +
+                    </button>
+                  </div>
+                  <div className={styles.quantityHint}>Макс: {maxQuantity}</div>
+                </div>
+                <div className={styles.actions}>
+                  <AddToCartButton
+                    slug={product.slug}
+                    label="Добавить в корзину"
+                    className={styles.addToCart}
+                  />
+                </div>
+              </div>
+              <button className={styles.buyNow} type="button">
+                Купить сейчас
+              </button>
+            </div>
 
-      <ProductReviewForm slug={product.slug} />
+            <div className={styles.details}>
+              <details className={styles.detailsItem} open>
+                <summary className={styles.detailsSummary}>Описание</summary>
+                <div className={styles.detailsBody}>
+                  {product.description || "Описание товара появится позже."}
+                </div>
+              </details>
+
+              <details className={styles.detailsItem}>
+                <summary className={styles.detailsSummary}>
+                  Характеристики
+                </summary>
+                <div className={styles.detailsBody}>
+                  <div className={styles.specList}>
+                    <div className={styles.specRow}>
+                      <span>Категория</span>
+                      <span>{product.category?.name || "—"}</span>
+                    </div>
+                    <div className={styles.specRow}>
+                      <span>Бренд</span>
+                      <span>{product.brand || "—"}</span>
+                    </div>
+                    <div className={styles.specRow}>
+                      <span>Артикул</span>
+                      <span>{product.sku || product.id || "—"}</span>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <details className={styles.detailsItem}>
+                <summary className={styles.detailsSummary}>
+                  Доставка и возврат
+                </summary>
+                <div className={styles.detailsBody}>
+                  Бесплатная доставка по Казахстану при заказе от 25,000 тенге.
+                  <br />
+                  <a href="/delivery">Условия доставки</a>
+                  <br />
+                  Возврат товара возможен в течение 14 дней со дня получения.
+                  <br />
+                  <a href="/returns">Условия возврата</a>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <Bestsellers />
+      <NewArrivals />
     </div>
   );
 }

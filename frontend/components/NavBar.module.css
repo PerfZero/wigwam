@@ -9,6 +9,10 @@
     background: rgba(30, 8, 2, 0.6);
 }
 
+.navBarStatic {
+    position: relative;
+}
+
 .navBar__separator {
     height: 1px;
     background-color: #ffffff30;
