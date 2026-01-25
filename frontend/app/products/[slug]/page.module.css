@@ -59,6 +59,10 @@
     margin-bottom: 40px;
 }
 
+.titleMobile {
+    display: none;
+}
+
 .gallery {
     display: grid;
     grid-template-columns: 100px minmax(0, 1fr);
@@ -78,8 +82,9 @@
     border: 0.83px solid rgba(168, 135, 71, 0.15);
     border-radius: 7px;
     background: #ffffff;
-    padding: 6px;
     cursor: pointer;
+    overflow: hidden;
+    height: 100px;
     display: grid;
     place-items: center;
 }
@@ -88,7 +93,7 @@
     display: block;
     width: 100%;
     height: 100px;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .thumbPlaceholder {
@@ -289,11 +294,11 @@
     background: #a88747;
     height: 48px !important;
     width: 100% !important;
-    border-radius: 0px;
     font-family: "Tenor Sans", sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 125%;
+    border-radius: 0px;
     text-align: center;
     color: #fff;
 }
@@ -331,33 +336,67 @@
     color: #492516;
 }
 
+.detailsSummaryIcon {
+    display: inline-flex;
+    transition: transform 0.2s ease;
+}
+
+.detailsItem:not([open]) .detailsSummaryIcon {
+    transform: rotate(180deg);
+}
+
 .detailsBody {
     margin-top: 12px;
     font-family: "Tenor Sans", sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 143%;
-    font-variant: all-small-caps;
+    font-variant: normal;
+    text-transform: none;
     color: #492516;
     line-height: 160%;
     color: #4d3326;
 }
 
-.reviewItem {
-    border-bottom: 1px solid rgba(73, 37, 22, 0.1);
-    padding-bottom: 12px;
-    margin-bottom: 12px;
+.detailsBody a {
+    text-decoration: underline;
+}
+
+.reviewList svg {
+    width: 12px;
+    height: 12px;
+}
+
+.reviewList {
+    display: grid;
+    gap: 16px;
+    font-variant: normal;
+    text-transform: none;
+}
+
+.reviewStars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 2px;
 }
 
 .reviewTitle {
+    font-family: "Playfair Display", sans-serif;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 16px;
 }
 
 .reviewMeta {
-    font-size: 12px;
-    color: #8b6b53;
-    margin-bottom: 6px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+    color: #492516;
+}
+
+.reviewText {
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+    line-height: 160%;
+    color: #4d3326;
 }
 
 .specList {
@@ -382,20 +421,135 @@
         grid-template-columns: 1fr;
     }
 
+    .titleDesktop {
+        display: none;
+    }
+
+    .titleMobile {
+        display: block;
+        margin-bottom: 16px;
+    }
+
     .gallery {
         grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
     }
 
     .thumbs {
+        order: 2;
         width: 100%;
+        overflow: hidden;
     }
 
     .thumbsSwiper {
         height: auto;
     }
+
+    .mainImageWrapper {
+        order: 1;
+    }
+
+    .thumbButton {
+        height: 80px;
+    }
+
+    .thumbImage {
+        height: 80px;
+    }
 }
 
 @media (max-width: 600px) {
+    .container {
+        padding: 0 8px;
+    }
+
+    .breadcrumbs {
+        padding: 8px;
+        margin-bottom: 24px;
+        font-size: 8px;
+    }
+
+    .breadcrumbs a {
+        font-size: 10px;
+    }
+    .breadcrumbs span {
+        font-size: 10px;
+    }
+
+    .breadcrumbs .container {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    .product {
+        gap: 24px;
+        margin-bottom: 24px;
+    }
+
+    .mainImageWrapper {
+        padding: 16px;
+        aspect-ratio: 1 / 1;
+        min-height: 280px;
+    }
+
+    .mainImage {
+        max-height: 320px;
+    }
+
+    .brand {
+        font-size: 12px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .rating {
+        gap: 10px;
+    }
+
+    .stars {
+        width: 100%;
+    }
+
+    .price {
+        font-size: 24px;
+    }
+
+    .info {
+        gap: 8px;
+    }
+
+    .purchaseTop {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    .quantityBlock {
+        flex-shrink: 0;
+    }
+
+    .quantityControl {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .addToCart,
+    .buyNow {
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+
+    .details {
+        margin-top: 24px;
+    }
+
+    .detailsSummary {
+        font-size: 16px;
+    }
+
+    .detailsBody {
+        font-size: 13px;
+    }
+
     .thumbsSwiper {
         height: auto;
     }

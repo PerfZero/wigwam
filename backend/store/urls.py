@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('api/categories/', views.categories_list, name='categories_list'),
+    path('api/attributes/', views.attributes_list, name='attributes_list'),
     path('api/products/', views.products_list, name='products_list'),
     path('api/products/<slug:slug>/', views.product_detail, name='product_detail'),
     path('api/products/<slug:slug>/reviews/', views.product_review_create, name='product_review_create'),
@@ -13,4 +14,5 @@ urlpatterns = [
     path('api/cart/items/', views.cart_add_item, name='cart_add_item'),
     path('api/cart/items/<int:item_id>/', views.cart_update_item, name='cart_update_item'),
     path('api/cart/items/<int:item_id>/remove/', views.cart_delete_item, name='cart_delete_item'),
+    path('api/subscribe/', views.subscribe_create, name='subscribe_create'),
 ]

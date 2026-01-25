@@ -167,7 +167,7 @@
     text-align: left;
     font-size: 32px;
     letter-spacing: 0.06em;
-    text-transform: uppercase;
+    font-variant-caps: all-small-caps;
     color: #492516;
     margin-bottom: 12px;
 }
@@ -190,6 +190,7 @@
     font-weight: 400;
     font-size: 24px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     color: #492516;
 }
 
@@ -199,6 +200,7 @@
     font-weight: 500;
     font-size: 24px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     color: #492516;
 }
 
@@ -219,6 +221,7 @@
     font-weight: 600;
     font-size: 24px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     text-align: center;
     color: #492516;
 }
@@ -229,6 +232,7 @@
     font-weight: 500;
     font-size: 24px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     color: #492516;
 }
 
@@ -260,6 +264,7 @@
     font-weight: 600;
     font-size: 24px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     color: #492516;
 }
 
@@ -268,6 +273,7 @@
     font-weight: 400;
     font-size: 20px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     color: #492516;
 }
 
@@ -282,6 +288,7 @@
     font-weight: 500;
     font-size: 24px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     color: #492516;
 }
 
@@ -290,6 +297,7 @@
     font-weight: 400;
     font-size: 24px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     color: #492516;
 }
 
@@ -336,6 +344,7 @@
     max-width: 1280px;
     font-size: 24px;
     font-variant: all-small-caps;
+    font-variant-caps: all-small-caps;
     text-align: center;
     color: #f2ede0;
     margin: 16px auto 40px;
@@ -359,11 +368,11 @@
 
 @media (max-width: 600px) {
     .hero__content {
-        padding: 40px 0 48px;
+        padding: 40px 0 0;
     }
 
     .assortmentGrid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .benefitsGrid {
@@ -376,3 +385,109 @@
         text-align: center;
     }
 }
+
+@media (max-width: 760px) {
+    .hero {
+        min-height: 255px;
+    }
+
+    .hero__media {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .hero__title {
+        font-size: 24px;
+        font-variant-caps: all-small-caps;
+
+        line-height: 120%;
+        letter-spacing: 0.04em;
+    }
+
+    .hero__lead {
+        width: 100%;
+        font-size: 16px;
+        margin: 16px auto 24px;
+    }
+
+    .page {
+        gap: 24px;
+        padding-top: 32px;
+    }
+
+    .sectionTitle {
+        font-size: 24px;
+        text-align: left;
+    }
+
+    .section {
+        padding: 0 16px;
+    }
+
+    .sectionText,
+    .standaloneQuote,
+    .assortmentQuote,
+    .quoteLead,
+    .quoteText {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .assortmentGrid {
+        gap: 20px;
+    }
+
+    .assortmentCaption {
+        font-size: 18px;
+    }
+
+    .benefitsGrid {
+        gap: 20px;
+    }
+
+    .benefitImage {
+        width: 140px;
+        height: 140px;
+    }
+
+    .benefitTitle {
+        font-size: 18px;
+        text-align: left;
+    }
+
+    .benefitText {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .section_down {
+        height: auto;
+        margin-bottom: -24px;
+    }
+
+    .hero__content_down {
+        padding: 32px 16px;
+    }
+
+    .hero__title_down {
+        font-size: 24px;
+        text-align: left;
+    }
+
+    .hero__text_down {
+        font-size: 16px;
+        margin: 12px auto 24px;
+        text-align: left;
+    }
+
+    .hero__button_down {
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+        font-size: 16px;
+        padding: 12px 20px;
+        align-self: flex-start;
+    }
+}
+

@@ -27,6 +27,7 @@ INSTALLED_APPS = [
     'content.apps.ContentConfig',
     'reviews.apps.ReviewsConfig',
     'carts.apps.CartsConfig',
+    'subscriptions.apps.SubscriptionsConfig',
     'corsheaders',
 ]
 

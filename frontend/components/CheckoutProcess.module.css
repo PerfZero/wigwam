@@ -63,3 +63,37 @@
     margin: 16px auto 0;
     color: #1e0802;
 }
+
+@media (max-width: 760px) {
+    .section {
+        margin: 24px auto;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    .list {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .step {
+        gap: 16px;
+    }
+
+    .stepImage {
+        width: 140px;
+        height: 140px;
+    }
+
+    .stepTitle {
+        font-size: 18px;
+    }
+
+    .stepDescription {
+        font-size: 14px;
+        max-width: 280px;
+    }
+}

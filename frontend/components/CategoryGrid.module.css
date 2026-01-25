@@ -65,6 +65,14 @@
 @media (max-width: 640px) {
     .categoryGrid {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 8px;
+    }
+
+    .categoryGrid__item {
+        min-height: 200px;
+    }
+
+    .categoryGrid__content {
+        font-size: 20px;
     }
 }

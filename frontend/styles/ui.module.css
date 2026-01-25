@@ -1,6 +1,8 @@
 .ui__container {
-    width: 1200px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
 .ui__stack {
@@ -103,4 +105,18 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+@media (max-width: 760px) {
+    .ui__container {
+        padding: 0;
+    }
+
+    .ui__section {
+        margin: 24px auto;
+    }
+
+    .ui__stack {
+        gap: 0;
+    }
 }

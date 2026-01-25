@@ -15,6 +15,7 @@ export default function ConditionsPage() {
           соглашение
         </>
       ),
+      labelText: "Пользовательское соглашение",
     },
     {
       key: "privacy",
@@ -25,6 +26,7 @@ export default function ConditionsPage() {
           конфиденциальности
         </>
       ),
+      labelText: "Политика конфиденциальности",
     },
     {
       key: "age",
@@ -35,6 +37,7 @@ export default function ConditionsPage() {
           ограничение 18+
         </>
       ),
+      labelText: "Возрастное ограничение 18+",
     },
     {
       key: "delivery",
@@ -45,6 +48,7 @@ export default function ConditionsPage() {
           доставки и оплаты
         </>
       ),
+      labelText: "Условия доставки и оплаты",
     },
     {
       key: "disclaimer",
@@ -55,6 +59,7 @@ export default function ConditionsPage() {
           от ответственности
         </>
       ),
+      labelText: "Отказ от ответственности",
     },
   ];
   const [activeTab, setActiveTab] = useState("agreement");
@@ -64,6 +69,20 @@ export default function ConditionsPage() {
       <header className={styles.header}>
         <div className={styles.container}>
           <h1 className={styles.title}>Условия</h1>
+          <div className={styles.tabsSelect}>
+            <select
+              className={styles.tabsSelectInput}
+              value={activeTab}
+              onChange={(event) => setActiveTab(event.target.value)}
+              aria-label="Раздел условий"
+            >
+              {tabs.map((tab) => (
+                <option key={tab.key} value={tab.key}>
+                  {tab.labelText}
+                </option>
+              ))}
+            </select>
+          </div>
           <nav className={styles.tabs}>
             {tabs.map((tab) => (
               <button

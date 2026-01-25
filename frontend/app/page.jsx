@@ -2,7 +2,7 @@ import Link from "next/link";
 import { apiUrl } from "../lib/api";
 import CategoryGrid from "../components/CategoryGrid";
 import HeroSlider from "../components/HeroSlider";
-import ProductCard from "../components/ProductCard";
+import ProductSwiper from "../components/ProductSwiper";
 import CheckoutProcess from "../components/CheckoutProcess";
 import TobaccoHistory from "../components/TobaccoHistory";
 import WigWamCompany from "../components/WigWamCompany";
@@ -47,19 +47,11 @@ export default async function Home() {
       <HeroSlider />
 
       <div className={`${ui.ui__container} ${ui.ui__stack}`}>
-        <section className={ui.ui__section}>
-          <div className={ui.ui__sectionHead}></div>
-          <div className={ui.ui__grid}>
-            {newProducts.length === 0 && <p>Новинки скоро появятся.</p>}
-            {newProducts.slice(0, 4).map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        </section>
+        <ProductSwiper products={newProducts} title="Новинки" />
 
         <section className={styles.section_categories}>
           <div className={styles.sectionHead}>
-            <h2 className={styles.sectionTitle}>Категории</h2>
+            <h2 className={styles.sectionTitles}>Категории</h2>
           </div>
           {categories.length === 0 && <p>Пока нет категорий.</p>}
           {categories.length > 0 && (

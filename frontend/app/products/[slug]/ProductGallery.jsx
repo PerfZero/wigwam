@@ -39,6 +39,10 @@ export default function ProductGallery({ images = [], name }) {
           spaceBetween={12}
           onSwiper={setThumbsSwiper}
           watchSlidesProgress
+          breakpoints={{
+            0: { direction: "horizontal", slidesPerView: 4 },
+            900: { direction: "vertical", slidesPerView: 4 },
+          }}
           className={styles.thumbsSwiper}
         >
           {slides.map((src, index) => (
@@ -70,7 +74,10 @@ export default function ProductGallery({ images = [], name }) {
           className={styles.mainSwiper}
         >
           {slides.map((src, index) => (
-            <SwiperSlide key={`${src}-main-${index}`} className={styles.mainSlide}>
+            <SwiperSlide
+              key={`${src}-main-${index}`}
+              className={styles.mainSlide}
+            >
               {src ? (
                 <img className={styles.mainImage} src={src} alt={name} />
               ) : (

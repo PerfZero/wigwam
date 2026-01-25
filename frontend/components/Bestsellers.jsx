@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { apiUrl } from "../lib/api";
-import ProductCard from "./ProductCard";
+import ProductSwiper from "./ProductSwiper";
 import ui from "../styles/ui.module.css";
-import styles from "./Bestsellers.module.css";
+import styles from "../app/page.module.css";
 
 export default function Bestsellers() {
   const [newProducts, setNewProducts] = useState([]);
@@ -43,21 +43,16 @@ export default function Bestsellers() {
     };
   }, []);
 
-  return (
-    <section className={`${ui.ui__section} ${styles.section}`}>
-      <div className={ui.ui__container}>
-        <p className={styles.kicker}>Выбор постоянных клиентов</p>
-        <h2 className={styles.title}>Бестселлеры</h2>
-        <div className={ui.ui__grid}>
-          {loading && <p>Загружаем подборку...</p>}
-          {!loading && newProducts.length === 0 && (
-            <p>Новинки скоро появятся.</p>
-          )}
-          {newProducts.slice(0, 4).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+  if (loading) {
+    return (
+      <section className={ui.ui__section}>
+        <div className={styles.sectionHead}>
+          <h2 className={styles.sectionTitles}>Бестселлеры</h2>
         </div>
-      </div>
-    </section>
-  );
+        <p>Загружаем подборку...</p>
+      </section>
+    );
+  }
+
+  return <ProductSwiper products={newProducts} title="Бестселлеры" />;
 }

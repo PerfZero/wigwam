@@ -1,57 +1,86 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { apiUrl } from "../../lib/api";
 import ProductCard from "../../components/ProductCard";
-import ui from "../../styles/ui.module.css";
+import styles from "./page.module.css";
 
 export default function SearchPage() {
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const initialQuery = (searchParams.get("q") || "").trim();
+  const [query, setQuery] = useState(initialQuery);
   const [results, setResults] = useState([]);
   const [status, setStatus] = useState("idle");
 
-  async function handleSearch(event) {
-    event.preventDefault();
+  async function runSearch(term) {
+    const trimmed = term.trim();
+    if (!trimmed) {
+      setResults([]);
+      setStatus("idle");
+      return;
+    }
     setStatus("loading");
     try {
-      const response = await fetch(apiUrl("/api/products/"));
-      const data = await response.json();
-      const list = data.results || [];
-      const filtered = list.filter((item) =>
-        item.name.toLowerCase().includes(query.toLowerCase()),
+      const response = await fetch(
+        apiUrl(`/api/products/?q=${encodeURIComponent(trimmed)}`),
       );
-      setResults(filtered);
+      const data = await response.json();
+      setResults(data.results || []);
       setStatus("ready");
     } catch (error) {
       setStatus("error");
     }
   }
 
+  async function handleSearch(event) {
+    event.preventDefault();
+    runSearch(query);
+  }
+
+  useEffect(() => {
+    if (initialQuery) {
+      setQuery(initialQuery);
+      runSearch(initialQuery);
+    }
+  }, [initialQuery]);
+
   return (
-    <div className={`${ui.ui__container} ${ui.ui__stack}`}>
-      <h1>Поиск</h1>
-      <form className={`${ui.ui__card} ${ui.ui__form}`} onSubmit={handleSearch}>
-        <label className={ui.ui__formLabel}>
-          Что ищем
-          <input
-            className={ui.ui__input}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </label>
-        <button className={ui.ui__button} type="submit">
-          Найти
-        </button>
-      </form>
-      {status === "error" && <p>Не удалось выполнить поиск.</p>}
-      {status === "ready" && results.length === 0 && <p>Ничего не найдено.</p>}
-      {results.length > 0 && (
-        <div className={ui.ui__grid}>
-          {results.map((item) => (
-            <ProductCard key={item.id} product={item} />
-          ))}
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <h1 className={styles.title}>Поиск</h1>
+          <form className={styles.searchForm} onSubmit={handleSearch}>
+            <input
+              className={styles.searchInput}
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Что ищем?"
+              aria-label="Поиск"
+              name="q"
+            />
+            <button className={styles.searchButton} type="submit">
+              Найти
+            </button>
+          </form>
         </div>
-      )}
+      </header>
+
+      <main className={styles.container}>
+        {status === "error" && (
+          <p className={styles.message}>Не удалось выполнить поиск.</p>
+        )}
+        {status === "ready" && results.length === 0 && (
+          <p className={styles.message}>Ничего не найдено.</p>
+        )}
+        {results.length > 0 && (
+          <div className={styles.grid}>
+            {results.map((item) => (
+              <ProductCard key={item.id} product={item} />
+            ))}
+          </div>
+        )}
+      </main>
     </div>
   );
 }

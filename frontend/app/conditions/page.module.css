@@ -32,6 +32,32 @@
     border-bottom: 1px solid rgba(73, 37, 22, 0.2);
 }
 
+.tabsSelect {
+    display: none;
+    margin-top: 24px;
+}
+
+.tabsSelectInput {
+    width: 100%;
+    background: #f3eee3;
+    border: 1px solid rgba(73, 37, 22, 0.6);
+    padding: 12px 42px 12px 14px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 16px;
+    color: #492516;
+    text-align: left;
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'><path d='M4.75 6C4.61 6 4.48 5.95 4.38 5.85L0.32 1.63C0.23 1.54 0.18 1.42 0.18 1.29C0.18 1.02 0.39 0.82 0.66 0.82C0.79 0.82 0.91 0.87 1 0.96L4.75 4.77L8.5 0.96C8.59 0.87 8.71 0.82 8.84 0.82C9.11 0.82 9.32 1.02 9.32 1.29C9.32 1.42 9.27 1.54 9.18 1.63L5.12 5.85C5.02 5.95 4.89 6 4.75 6Z' fill='%23492516'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 10px 6px;
+}
+
+.tabsSelectInput:focus {
+    outline: 2px solid rgba(73, 37, 22, 0.3);
+    outline-offset: 2px;
+}
+
 .tab {
     font-family: "Tenor Sans", sans-serif;
     font-weight: 400;
@@ -103,7 +129,11 @@
 }
 
 @media (max-width: 720px) {
+    .tabsSelect {
+        display: block;
+    }
+
     .tabs {
-        grid-template-columns: 1fr;
+        display: none;
     }
 }

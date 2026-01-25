@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { apiUrl } from "../lib/api";
 import { getCartToken, setCartToken } from "../lib/cart";
+import { useCart } from "../contexts/CartContext";
 import ui from "../styles/ui.module.css";
-import styles from "./ProductCard.module.css";
+import styles from "./AddToCartButton.module.css";
 
 export default function AddToCartButton({
   slug,
@@ -12,8 +13,10 @@ export default function AddToCartButton({
   className = "",
   label = "В корзину",
   iconSrc = "/svg/incart.svg",
+  quantity = 1,
 }) {
   const [status, setStatus] = useState("idle");
+  const { updateCart } = useCart();
 
   async function handleAdd() {
     setStatus("loading");
@@ -25,13 +28,22 @@ export default function AddToCartButton({
           "Content-Type": "application/json",
           ...(token ? { "X-Cart-Token": token } : {}),
         },
-        body: JSON.stringify({ product_slug: slug, quantity: 1 }),
+        body: JSON.stringify({ product_slug: slug, quantity }),
       });
       const data = await response.json();
       if (data?.token) {
         setCartToken(data.token);
       }
       setStatus("success");
+
+      // Обновляем состояние корзины через context
+      if (data?.items) {
+        const totalCount = data.items.reduce(
+          (sum, item) => sum + item.quantity,
+          0,
+        );
+        updateCart(totalCount, data.items);
+      }
     } catch (error) {
       setStatus("error");
     }
@@ -41,11 +53,14 @@ export default function AddToCartButton({
   const buttonClassName = isIcon
     ? className
     : `${ui.ui__button} ${className}`.trim();
+  const baseClassName = `${styles.button} ${
+    isIcon ? styles.iconButton : styles.textButton
+  }`;
 
   return (
     <button
       type="button"
-      className={`${buttonClassName} ${styles.productCard__cartButtons}`}
+      className={`${baseClassName} ${buttonClassName}`.trim()}
       onClick={handleAdd}
       disabled={status === "loading"}
       aria-label={label}

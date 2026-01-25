@@ -57,6 +57,127 @@ class Product(models.Model):
         return self.name
 
 
+class ProductImage(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='images',
+        verbose_name='Товар',
+    )
+    image = models.ImageField(upload_to='products/', verbose_name='Изображение')
+    sort_order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
+
+    class Meta:
+        ordering = ['sort_order', 'id']
+        verbose_name = 'Изображение товара'
+        verbose_name_plural = 'Изображения товара'
+
+    def __str__(self) -> str:
+        return f'{self.product} ({self.sort_order})'
+
+
+class Attribute(models.Model):
+    TYPE_SELECT = 'select'
+    TYPE_TEXT = 'text'
+    TYPE_NUMBER = 'number'
+    TYPE_BOOLEAN = 'boolean'
+    TYPE_CHOICES = [
+        (TYPE_SELECT, 'Список'),
+        (TYPE_TEXT, 'Текст'),
+        (TYPE_NUMBER, 'Число'),
+        (TYPE_BOOLEAN, 'Да/Нет'),
+    ]
+
+    name = models.CharField(max_length=120, verbose_name='Название')
+    slug = models.SlugField(unique=True, verbose_name='Слаг')
+    type = models.CharField(
+        max_length=20,
+        choices=TYPE_CHOICES,
+        default=TYPE_SELECT,
+        verbose_name='Тип',
+    )
+    sort_order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
+    unit = models.CharField(max_length=40, blank=True, verbose_name='Единица измерения')
+    is_filterable = models.BooleanField(default=True, verbose_name='Фильтруется')
+
+    class Meta:
+        ordering = ['sort_order', 'name']
+        verbose_name = 'Атрибут'
+        verbose_name_plural = 'Атрибуты'
+
+    def __str__(self) -> str:
+        return self.name
+
+
+class AttributeOption(models.Model):
+    attribute = models.ForeignKey(
+        Attribute,
+        on_delete=models.CASCADE,
+        related_name='options',
+        verbose_name='Атрибут',
+    )
+    value = models.CharField(max_length=120, verbose_name='Значение')
+    slug = models.SlugField(verbose_name='Слаг')
+    sort_order = models.PositiveIntegerField(default=0, verbose_name='Порядок')
+
+    class Meta:
+        ordering = ['sort_order', 'value']
+        unique_together = ['attribute', 'slug']
+        verbose_name = 'Опция атрибута'
+        verbose_name_plural = 'Опции атрибутов'
+
+    def __str__(self) -> str:
+        return f'{self.attribute}: {self.value}'
+
+
+class ProductAttributeValue(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='attribute_values',
+        verbose_name='Товар',
+    )
+    attribute = models.ForeignKey(
+        Attribute,
+        on_delete=models.CASCADE,
+        related_name='product_values',
+        verbose_name='Атрибут',
+    )
+    option = models.ForeignKey(
+        AttributeOption,
+        on_delete=models.CASCADE,
+        related_name='product_values',
+        null=True,
+        blank=True,
+        verbose_name='Опция',
+    )
+    value_text = models.CharField(
+        max_length=200,
+        blank=True,
+        verbose_name='Текстовое значение',
+    )
+    value_number = models.DecimalField(
+        max_digits=12,
+        decimal_places=2,
+        null=True,
+        blank=True,
+        verbose_name='Числовое значение',
+    )
+    value_boolean = models.BooleanField(
+        null=True,
+        blank=True,
+        verbose_name='Да/Нет',
+    )
+
+    class Meta:
+        unique_together = ['product', 'attribute']
+        verbose_name = 'Значение атрибута'
+        verbose_name_plural = 'Значения атрибутов'
+
+    def __str__(self) -> str:
+        return f'{self.product} - {self.attribute}'
+
+
 class Review(models.Model):
     product = models.ForeignKey(
         Product,
@@ -164,3 +285,17 @@ class CartItem(models.Model):
 
     def __str__(self) -> str:
         return f'{self.product} x {self.quantity}'
+
+
+class Subscription(models.Model):
+    email = models.EmailField(unique=True, verbose_name='Email')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата подписки')
+    is_active = models.BooleanField(default=True, verbose_name='Активна')
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = 'Подписка'
+        verbose_name_plural = 'Подписки'
+
+    def __str__(self) -> str:
+        return f'{self.email} ({self.created_at.date()})'

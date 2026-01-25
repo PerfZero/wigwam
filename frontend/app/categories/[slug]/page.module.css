@@ -43,22 +43,58 @@
     max-width: 560px;
 }
 
-.link {
+.categoryDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.categoryContent {
+    order: 1;
+}
+
+.categoryToggle {
+    order: 2;
     font-family: "Tenor Sans", sans-serif;
     font-weight: 400;
     font-size: 14px;
-    display: flex;
+    display: inline-flex;
     gap: 8px;
     align-items: center;
     justify-content: center;
-    width: 131px;
-
+    width: fit-content;
     margin-top: 24px;
     line-height: 143%;
     text-align: center;
     color: #492516;
     border: 0.5px solid #492516;
     padding: 8px 12px;
+    cursor: pointer;
+}
+
+.toggleIcon {
+    transition: transform 0.2s ease;
+}
+
+.categoryDetailsOpen .toggleIcon {
+    transform: rotate(180deg);
+}
+
+.categoryDetailsCollapsed .categoryContent {
+    height: 83px;
+    overflow: hidden;
+}
+
+.categoryDetailsCollapsed
+    .categoryContent
+    :global(.category-description__item) {
+    display: none;
+}
+
+.categoryDetailsCollapsed
+    .categoryContent
+    :global(.category-description__item:nth-child(-n + 2)) {
+    display: grid;
 }
 
 .bestsellers {
@@ -107,6 +143,16 @@
 
 .sorting {
     justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sortingLabel {
+    white-space: nowrap;
+}
+
+.sortingDesktop {
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -116,8 +162,100 @@
     font-size: 14px;
 }
 
-.sortingLabel {
-    white-space: nowrap;
+.sortingSelect {
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+}
+
+.sortingMobileButton {
+    display: none;
+    width: 100%;
+    border: 1px solid rgba(73, 37, 22, 0.4);
+    background: transparent;
+    padding: 10px 16px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+    text-align: left;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.sortSheetBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+    z-index: 20;
+}
+
+.sortSheetBackdropOpen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.sortSheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    border-radius: 16px 16px 0 0;
+    transform: translateY(100%);
+    transition: transform 220ms ease;
+    z-index: 21;
+    padding: 16px;
+}
+
+.sortSheetOpen {
+    transform: translateY(0);
+}
+
+.sortSheetHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(73, 37, 22, 0.2);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+.sortSheetTitle {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+}
+
+.sortSheetClose {
+    border: 1px solid rgba(73, 37, 22, 0.4);
+    background: transparent;
+    padding: 6px 12px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 12px;
+}
+
+.sortSheetBody {
+    display: grid;
+    gap: 8px;
+}
+
+.sortSheetOption {
+    border: 1px solid rgba(73, 37, 22, 0.2);
+    background: transparent;
+    padding: 10px 12px;
+    text-align: left;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+    color: #492516;
+}
+
+.sortSheetOptionActive {
+    border-color: rgba(73, 37, 22, 0.6);
+    background: rgba(168, 135, 71, 0.12);
 }
 
 .catalogBody {
@@ -133,6 +271,74 @@
     border: 1px solid rgba(168, 135, 71, 0.1);
     padding: 16px;
     font-family: "Tenor Sans", sans-serif;
+}
+
+.filtersMobileButton {
+    display: none;
+    width: 100%;
+    border: 1px solid rgba(73, 37, 22, 0.4);
+    background: transparent;
+    padding: 10px 16px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.mobileButtonLeft {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mobileButtonIcon {
+    display: inline-flex;
+}
+
+.mobileButtonRight {
+    display: inline-flex;
+    transition: transform 180ms ease;
+}
+
+.filtersBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+    z-index: 20;
+}
+
+.filtersBackdropOpen {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.filtersMobileHeader {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(73, 37, 22, 0.2);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+}
+
+.filtersMobileTitle {
+    font-family: "Playfair Display", sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+}
+
+.filtersMobileClose {
+    border: 1px solid rgba(73, 37, 22, 0.4);
+    background: transparent;
+    padding: 6px 12px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 12px;
 }
 
 .filterTitle {
@@ -340,8 +546,105 @@
 }
 
 @media (max-width: 600px) {
+    .sectionheader {
+        padding: 24px 0;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .categoryDetails {
+        gap: 8px;
+    }
+
+    .categoryToggle {
+        width: 100%;
+    }
+
+    .bestsellers {
+        padding: 24px 0;
+    }
+
     .bestsellersGrid,
-    .productsGrid {
+    .bestsellersGrid {
         grid-template-columns: 1fr;
+    }
+
+    .catalog {
+        padding: 24px 0 48px;
+    }
+
+    .sorting {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .sortingDesktop {
+        display: none;
+    }
+
+    .sortingMobileButton {
+        display: inline-flex;
+    }
+
+    .filtersMobileButton {
+        display: inline-flex;
+    }
+
+    .catalogBody {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .products {
+        display: contents;
+    }
+
+    .catalogHeader {
+        display: contents;
+    }
+
+    .sorting {
+        display: contents;
+    }
+
+    .filtersMobileButton {
+        grid-column: 1;
+    }
+
+    .sortingMobileButton {
+        grid-column: 2;
+    }
+
+    .filters {
+        position: fixed;
+        inset: auto 0 0 0;
+        max-height: 85vh;
+        overflow: auto;
+        transform: translateY(100%);
+        transition: transform 220ms ease;
+        z-index: 21;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .filtersOpen {
+        transform: translateY(0);
+    }
+
+    .filtersMobileHeader {
+        display: flex;
+    }
+
+    .productsGrid {
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
     }
 }

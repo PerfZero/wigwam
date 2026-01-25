@@ -29,3 +29,20 @@
     gap: 40px;
     justify-content: space-between;
 }
+
+@media (max-width: 760px) {
+    .section {
+        padding: 16px 0 24px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-top: 16px;
+    }
+
+    .brands {
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 24px;
+        gap: 20px;
+    }
+}

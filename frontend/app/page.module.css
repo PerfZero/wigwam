@@ -7,6 +7,46 @@
     animation: heroArrowPulse 1.8s ease-in-out infinite;
 }
 
+.sectionTitles {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    margin-bottom: 20px;
+    line-height: 125%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    text-align: center;
+    color: #492516;
+}
+
+.sectionHead {
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+}
+
+.sectionHeadLeft {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.sectionHeadLeft .sectionTitles {
+    text-align: left;
+}
+
+.sectionKicker {
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 0 0 8px;
+    color: #492516;
+}
+
 .hero {
     position: relative;
     min-height: 100vh;
@@ -181,5 +221,44 @@
 @media (max-width: 600px) {
     .hero__content {
         padding: 40px 0 48px;
+    }
+}
+
+@media (max-width: 760px) {
+    .hero__title {
+        font-size: 32px;
+        line-height: 120%;
+        letter-spacing: 0.04em;
+    }
+
+    .hero__lead {
+        width: 100%;
+        font-size: 16px;
+        margin: 16px auto 24px;
+    }
+
+    .hero__actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .hero__button {
+        width: 100%;
+        max-width: 280px;
+        font-size: 16px;
+        padding: 12px 20px;
+    }
+
+    .hero__arrowButton {
+        display: none;
+    }
+
+    .sectionTitles,
+    .sectionTitle {
+        font-size: 24px;
+    }
+
+    .section_categories {
+        margin: 24px 0;
     }
 }

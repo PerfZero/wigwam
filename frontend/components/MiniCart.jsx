@@ -3,44 +3,16 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useCart } from "../contexts/CartContext";
 import { apiUrl } from "../lib/api";
-import { getCartToken, setCartToken } from "../lib/cart";
+import { getCartToken } from "../lib/cart";
 import styles from "./MiniCart.module.css";
 
 export default function MiniCart() {
-  const [count, setCount] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [items, setItems] = useState([]);
+  const { count, items, loading, loadCart } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const rootRef = useRef(null);
-
-  async function loadCart() {
-    setLoading(true);
-    try {
-      const token = getCartToken();
-      const response = await fetch(apiUrl("/api/cart/"), {
-        headers: token ? { "X-Cart-Token": token } : undefined,
-      });
-      const data = await response.json();
-      if (data?.token) {
-        setCartToken(data.token);
-      }
-      const nextItems = data?.items || [];
-      const total = nextItems.reduce((sum, item) => sum + item.quantity, 0);
-      setItems(nextItems);
-      setCount(total);
-    } catch (error) {
-      setItems([]);
-      setCount(0);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  useEffect(() => {
-    loadCart();
-  }, []);
 
   useEffect(() => {
     setIsMounted(true);
@@ -64,7 +36,7 @@ export default function MiniCart() {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [isOpen]);
+  }, [isOpen, loadCart]);
 
   async function updateItem(itemId, quantity) {
     if (quantity < 1) {

@@ -280,3 +280,9 @@
     color: #fff;
     border: 1px solid #a88747;
 }
+
+@media (max-width: 768px) {
+    .miniCart__panel {
+        height: 100vh;
+        padding: 16px;
+    }

@@ -1,6 +1,19 @@
 from django.contrib import admin
 
+from store.models import ProductAttributeValue, ProductImage
 from .models import Category, Product
+
+
+class ProductAttributeValueInline(admin.TabularInline):
+    model = ProductAttributeValue
+    extra = 0
+    fields = ('attribute', 'option', 'value_text', 'value_number', 'value_boolean')
+
+
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 0
+    fields = ('image', 'sort_order')
 
 
 @admin.register(Category)
@@ -25,3 +38,4 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('category', 'is_new', 'is_active')
     search_fields = ('name', 'slug')
     prepopulated_fields = {'slug': ('name',)}
+    inlines = [ProductImageInline, ProductAttributeValueInline]

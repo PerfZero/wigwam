@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar";
 import { Playfair_Display, Tenor_Sans } from "next/font/google";
 import styles from "./layout.module.css";
 import Footer from "../components/Footer";
+import { CartProvider } from "../contexts/CartContext";
 
 const playfair = Playfair_Display({
   subsets: ["latin", "cyrillic"],
@@ -26,11 +27,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru">
       <body className={`${playfair.variable} ${tenorSans.variable}`}>
-        <NavBar />
-        <main className={styles.layout__main}>{children}</main>
-        <footer className={styles.layout__footer}>
-          <Footer />
-        </footer>
+        <CartProvider>
+          <NavBar />
+          <main className={styles.layout__main}>{children}</main>
+          <footer className={styles.layout__footer}>
+            <Footer />
+          </footer>
+        </CartProvider>
       </body>
     </html>
   );
