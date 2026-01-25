@@ -7,7 +7,7 @@ services:
       - ./backend/media:/app/media
     environment:
       DJANGO_DEBUG: True
-      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,backend
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1,backend,wigwam.devdenis.ru
       CORS_ALLOWED_ORIGINS: http://localhost:3000,http://127.0.0.1:3000
 
   frontend:
