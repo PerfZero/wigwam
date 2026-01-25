@@ -1,0 +1,91 @@
+.page {
+    background: #fcfbf7;
+    color: #492516;
+    min-height: 100vh;
+}
+
+.header {
+    background: #f2ede0;
+    border-bottom: 1px solid rgba(168, 135, 71, 0.5);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+.title {
+    font-family: "Playfair Display", sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 125%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.searchForm {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.searchInput {
+    flex: 1;
+    min-width: 220px;
+    height: 44px;
+    border: 1px solid rgba(73, 37, 22, 0.4);
+    background: #fffdf8;
+    padding: 0 16px;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 16px;
+    color: #492516;
+}
+
+.searchInput::placeholder {
+    color: rgba(73, 37, 22, 0.6);
+}
+
+.searchButton {
+    height: 44px;
+    padding: 0 24px;
+    border: 1px solid #492516;
+    background: #492516;
+    color: #fff;
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.grid {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.message {
+    font-family: "Tenor Sans", sans-serif;
+    font-size: 16px;
+    color: rgba(73, 37, 22, 0.7);
+}
+
+@media (max-width: 720px) {
+    .container {
+        padding: 24px 16px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+
+    .searchForm {
+        gap: 10px;
+    }
+
+    .searchButton {
+        width: 100%;
+    }
+}

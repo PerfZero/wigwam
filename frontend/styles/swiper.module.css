@@ -1,0 +1,132 @@
+.swiper {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.swiperWrap {
+    position: relative;
+}
+
+.sliderRow {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+}
+
+.sliderRow :global(.swiper) {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0 15px 16px;
+    box-sizing: border-box;
+}
+
+.navButton {
+    position: relative;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+
+    background: #f2ede0;
+    color: #492516;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.navButton:global(.swiper-button-disabled) {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+.navButton svg {
+    width: 20px;
+    height: 20px;
+}
+
+.customNav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.customNav:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.customNav svg {
+    width: 32px;
+    height: 32px;
+}
+
+.product-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+    padding-right: 10px !important;
+}
+
+.sliderRow :global(.swiper-wrapper) {
+    align-items: stretch;
+    padding: 25px 0 !important;
+}
+
+.product-swiper .swiper-slide > * {
+    height: 100%;
+}
+
+.product-swiper .swiper-pagination-bullet {
+    background: #333;
+}
+
+.product-swiper .swiper-pagination-bullet-active {
+    background: #000;
+}
+
+.sectionTitles {
+    margin-bottom: 20px;
+}
+
+.product-swiper .swiper-button-next,
+.product-swiper .swiper-button-prev {
+    color: #333;
+}
+
+.product-swiper .swiper-button-next:hover,
+.product-swiper .swiper-button-prev:hover {
+    color: #000;
+}
+
+@media (max-width: 640px) {
+    .sliderRow {
+        grid-template-columns: 1fr;
+    }
+
+    .navButton {
+        display: none;
+    }
+
+    .sliderRow :global(.swiper) {
+        padding: 0;
+    }
+    .sliderRow :global(.swiper-wrapper) {
+        align-items: stretch;
+        padding: 0 0 !important;
+    }
+
+    .sliderRow :global(.swiper-wrapper) {
+        align-items: stretch;
+        padding: 7px !important;
+    }
+}
