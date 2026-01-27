@@ -4,7 +4,7 @@ import { IMaskInput } from "react-imask";
 import { useEffect, useState } from "react";
 import { apiUrl } from "../../lib/api";
 import { getCartToken, setCartToken } from "../../lib/cart";
-import ui from "../../styles/ui.module.css";
+import { formatPrice } from "../../lib/format";
 import styles from "./page.module.css";
 import Bestsellers from "../../components/Bestsellers";
 import NewArrivals from "../../components/NewArrivals";
@@ -59,7 +59,7 @@ export default function CartPage() {
 
   if (status === "loading") {
     return (
-      <div className={`${ui.ui__container} ${ui.ui__stack}`}>
+      <div className={`${styles.container} ${styles.stack}`}>
         <h1>Корзина</h1>
         <p>Загружаем корзину...</p>
       </div>
@@ -72,9 +72,6 @@ export default function CartPage() {
     0,
   );
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
-  const formatPrice = (value) =>
-    new Intl.NumberFormat("ru-RU").format(Number(value) || 0);
-
   const normalizeImageUrl = (url) => {
     if (!url) {
       return "/img/hero.webp";

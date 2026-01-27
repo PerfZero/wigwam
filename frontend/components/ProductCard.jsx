@@ -3,6 +3,7 @@
 import Link from "next/link";
 import AddToCartButton from "./AddToCartButton";
 import styles from "./ProductCard.module.css";
+import { formatPrice } from "../lib/format";
 
 const publicBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -39,7 +40,9 @@ export default function ProductCard({ product }) {
         </Link>
 
         <div className={styles.productCard__footer}>
-          <span className={styles.productCard__price}>{product.price} ₸</span>
+          <span className={styles.productCard__price}>
+            {formatPrice(product.price)} ₸
+          </span>
           <AddToCartButton
             slug={product.slug}
             variant="icon"

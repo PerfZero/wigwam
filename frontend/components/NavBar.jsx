@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import MiniCart from "./MiniCart";
 import { apiUrl } from "../lib/api";
 import styles from "./NavBar.module.css";
-import ui from "../styles/ui.module.css";
 
 const topLinks = [
   { href: "/", label: "Главная" },
@@ -164,7 +163,7 @@ export default function NavBar() {
         </div>
       </div>
 
-      <div className={`${ui.ui__container} ${styles.navBar__top}`}>
+      <div className={`${styles.container} ${styles.navBar__top}`}>
         <nav className={`${styles.navBar__nav} ${styles.navBar__topNav}`}>
           {topLinks.map((item) => (
             <Link
@@ -184,16 +183,8 @@ export default function NavBar() {
           />
         </Link>
         <div className={styles.navBar__actions}>
-          <Link
-            className={styles.ui__iconButton}
-            href="/search"
-            aria-label="Поиск"
-          >
-            <img
-              className={styles.ui__iconImage}
-              src="/svg/search.svg"
-              alt=""
-            />
+          <Link className={styles.iconButton} href="/search" aria-label="Поиск">
+            <img className={styles.iconImage} src="/svg/search.svg" alt="" />
           </Link>
           <MiniCart />
         </div>
@@ -203,10 +194,10 @@ export default function NavBar() {
       </div>
 
       <div className={styles.navBar__bottom}>
-        <div className={`${ui.ui__container} ${styles.navBar__bottomInner}`}>
+        <div className={`${styles.container} ${styles.navBar__bottomInner}`}>
           <nav className={`${styles.navBar__nav} ${styles.navBar__bottomNav}`}>
             {categories.length === 0 && (
-              <span className={ui.ui__muted}>Пока нет</span>
+              <span className={styles.muted}>Пока нет</span>
             )}
             {categories.map((category) => (
               <Link

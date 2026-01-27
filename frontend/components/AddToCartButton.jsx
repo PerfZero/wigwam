@@ -4,7 +4,6 @@ import { useState } from "react";
 import { apiUrl } from "../lib/api";
 import { getCartToken, setCartToken } from "../lib/cart";
 import { useCart } from "../contexts/CartContext";
-import ui from "../styles/ui.module.css";
 import styles from "./AddToCartButton.module.css";
 
 export default function AddToCartButton({
@@ -50,9 +49,7 @@ export default function AddToCartButton({
   }
 
   const isIcon = variant === "icon";
-  const buttonClassName = isIcon
-    ? className
-    : `${ui.ui__button} ${className}`.trim();
+  const buttonClassName = className;
   const baseClassName = `${styles.button} ${
     isIcon ? styles.iconButton : styles.textButton
   }`;

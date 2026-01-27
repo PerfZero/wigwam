@@ -1,0 +1,41 @@
+.container {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.stack {
+    display: grid;
+    gap: 24px;
+}
+
+.grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid #e5e0d6;
+    border-radius: 18px;
+    padding: 18px;
+    display: grid;
+    gap: 8px;
+    min-width: 240px;
+    flex: 1 1 240px;
+}
+
+@media (max-width: 760px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .stack {
+        gap: 16px;
+    }
+
+    .grid {
+        gap: 20px;
+    }
+}

@@ -1,4 +1,3 @@
-import ui from "../../styles/ui.module.css";
 import styles from "./page.module.css";
 import NewArrivals from "../../components/NewArrivals";
 
@@ -8,7 +7,7 @@ export default function AboutPage() {
       <section className={styles.hero}>
         <div className={styles.hero__media} aria-hidden="true" />
         <div className={styles.hero__overlay} aria-hidden="true" />
-        <div className={`${styles.hero__content} ${ui.ui__container}`}>
+        <div className={`${styles.hero__content} ${styles.container}`}>
           <div className={styles.hero__main}>
             <div className={styles.hero__textFade}>
               <h1 className={styles.hero__title}>О компании Wig-Wam</h1>
@@ -22,7 +21,7 @@ export default function AboutPage() {
 
       <div className={styles.page}>
         <section className={styles.section}>
-          <div className={ui.ui__container}>
+          <div className={styles.container}>
             <h2 className={styles.sectionTitle}>Основа табачной культуры</h2>
             <p className={styles.sectionText}>
               Wig-Wam появился в тот момент, когда табачная культура в городе
@@ -33,7 +32,7 @@ export default function AboutPage() {
           </div>
         </section>
         <section className={styles.section}>
-          <div className={ui.ui__container}>
+          <div className={styles.container}>
             <h2 className={styles.sectionTitle}>
               Прямые связи. Проверенные источники
             </h2>
@@ -51,7 +50,7 @@ export default function AboutPage() {
           </div>
         </section>
         <section className={styles.section}>
-          <div className={ui.ui__container}>
+          <div className={styles.container}>
             <p className={styles.standaloneQuote}>
               "Каждый новый бренд в ассортименте — это осознанный выбор, а не
               компромисс."
@@ -59,7 +58,7 @@ export default function AboutPage() {
           </div>
         </section>
         <section className={styles.section}>
-          <div className={ui.ui__container}>
+          <div className={styles.container}>
             <h2 className={styles.sectionTitle}>
               Ассортимент без случайных позиций
             </h2>
@@ -107,7 +106,7 @@ export default function AboutPage() {
           </div>
         </section>
         <section className={styles.section}>
-          <div className={ui.ui__container}>
+          <div className={styles.container}>
             <h2 className={styles.sectionTitle}>Наши преимущества</h2>
             <div className={styles.benefitsGrid}>
               <div className={styles.benefitCard}>
@@ -173,7 +172,7 @@ export default function AboutPage() {
           </div>
         </section>
         <section className={styles.section}>
-          <div className={ui.ui__container}>
+          <div className={styles.container}>
             <h2 className={styles.sectionTitle}>
               Уважение к истории и деталям
             </h2>

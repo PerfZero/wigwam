@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { apiUrl } from "../../lib/api";
-import ui from "../../styles/ui.module.css";
+import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -19,14 +19,14 @@ export default async function CategoriesPage() {
   const categories = await getCategories();
 
   return (
-    <div className={`${ui.ui__container} ${ui.ui__stack}`}>
+    <div className={`${styles.container} ${styles.stack}`}>
       <h1>Категории</h1>
-      <div className={ui.ui__grid}>
+      <div className={styles.grid}>
         {categories.length === 0 && <p>Категории еще не добавлены.</p>}
         {categories.map((category) => (
           <Link
             key={category.id}
-            className={ui.ui__card}
+            className={styles.card}
             href={`/categories/${category.slug}`}
           >
             <h3>{category.name}</h3>

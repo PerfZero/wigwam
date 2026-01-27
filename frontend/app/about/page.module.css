@@ -41,6 +41,7 @@
     z-index: 1;
     display: grid;
     place-items: center;
+
     padding: 56px 0 64px;
     color: #f8f5ef;
     text-align: center;
@@ -180,6 +181,12 @@
     color: #2b1a14;
 }
 
+.container {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 .section {
     display: grid;
     gap: 16px;
@@ -189,8 +196,8 @@
     font-family: "Tenor Sans", sans-serif;
     font-weight: 400;
     font-size: 24px;
-    font-variant: all-small-caps;
-    font-variant-caps: all-small-caps;
+    font-variant: normal;
+    font-variant-caps: normal;
     color: #492516;
 }
 
@@ -381,8 +388,8 @@
 
     .benefitCard {
         flex-direction: column;
-        justify-items: center;
-        text-align: center;
+        align-items: flex-start;
+        text-align: left;
     }
 }
 
@@ -397,23 +404,38 @@
         object-fit: cover;
     }
 
+    .hero__content {
+        place-items: start;
+        text-align: left;
+    }
+
+    .hero__main {
+        justify-items: start;
+    }
+
     .hero__title {
         font-size: 24px;
         font-variant-caps: all-small-caps;
 
         line-height: 120%;
         letter-spacing: 0.04em;
+        text-align: left;
     }
 
     .hero__lead {
         width: 100%;
         font-size: 16px;
         margin: 16px auto 24px;
+        text-align: left;
     }
 
     .page {
         gap: 24px;
         padding-top: 32px;
+    }
+
+    .container {
+        padding: 0 16px;
     }
 
     .sectionTitle {
@@ -438,8 +460,14 @@
         gap: 20px;
     }
 
+    .assortmentCard {
+        justify-items: start;
+        text-align: left;
+    }
+
     .assortmentCaption {
         font-size: 18px;
+        text-align: left;
     }
 
     .benefitsGrid {
@@ -468,6 +496,8 @@
 
     .hero__content_down {
         padding: 32px 16px;
+        align-items: flex-start;
+        text-align: left;
     }
 
     .hero__title_down {
@@ -483,11 +513,10 @@
 
     .hero__button_down {
         width: 100%;
-        max-width: 280px;
-        margin: 0 auto;
+        max-width: 320px;
+        margin: 0;
         font-size: 16px;
         padding: 12px 20px;
         align-self: flex-start;
     }
 }
-

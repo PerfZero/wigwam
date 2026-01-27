@@ -4,6 +4,10 @@
     margin: 0 auto;
 }
 
+.section {
+    margin: 40px auto;
+}
+
 .swiperWrap {
     position: relative;
 }
@@ -79,7 +83,6 @@
 
 .sliderRow :global(.swiper-wrapper) {
     align-items: stretch;
-    padding: 25px 0 !important;
 }
 
 .product-swiper .swiper-slide > * {
@@ -119,6 +122,10 @@
 
     .sliderRow :global(.swiper) {
         padding: 0;
+    }
+
+    .section {
+        margin: 24px auto;
     }
     .sliderRow :global(.swiper-wrapper) {
         align-items: stretch;

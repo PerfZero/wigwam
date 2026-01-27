@@ -2,6 +2,17 @@
     display: grid;
 }
 
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.stack {
+    display: grid;
+    gap: 24px;
+}
+
 .hero__arrow {
     margin-top: 20px;
     animation: heroArrowPulse 1.8s ease-in-out infinite;
@@ -11,7 +22,7 @@
     font-family: "Playfair Display", sans-serif;
     font-weight: 700;
     font-size: 32px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     line-height: 125%;
     letter-spacing: 0.04em;
     text-transform: uppercase;
@@ -23,6 +34,7 @@
 .sectionHead {
     display: flex;
     align-items: center;
+    flex-direction: column;
 
     justify-content: center;
 }
@@ -40,10 +52,11 @@
 
 .sectionKicker {
     font-family: "Tenor Sans", sans-serif;
-    font-size: 12px;
-    letter-spacing: 0.18em;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 137%;
     text-transform: uppercase;
-    margin: 0 0 8px;
+    text-align: center;
     color: #492516;
 }
 
@@ -84,6 +97,12 @@
     padding: 56px 0 64px;
     color: #f8f5ef;
     text-align: center;
+}
+
+.hero__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .hero__main {
@@ -131,6 +150,11 @@
     padding: 16px 32px;
 
     background: #f2ede0;
+}
+
+.hero__button:hover {
+    background: #a88747;
+    color: #fff;
 }
 
 .hero__arrowButton {
@@ -225,6 +249,17 @@
 }
 
 @media (max-width: 760px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .stack {
+        gap: 16px;
+    }
+
+    .hero__container {
+        padding: 0 16px;
+    }
     .hero__title {
         font-size: 32px;
         line-height: 120%;

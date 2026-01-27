@@ -2,6 +2,12 @@
     margin: 40px auto;
 }
 
+.container {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 .title {
     font-family: "Playfair Display", sans-serif;
     font-weight: 700;
@@ -67,6 +73,10 @@
 @media (max-width: 760px) {
     .section {
         margin: 24px auto;
+    }
+
+    .container {
+        padding: 0 16px;
     }
 
     .title {

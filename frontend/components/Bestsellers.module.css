@@ -1,27 +1,9 @@
-.kicker {
-    font-family: "Tenor Sans", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 138%;
-    text-transform: uppercase;
-    text-align: center;
-    color: #492516;
-}
-
-.title {
-    font-family: "Playfair Display", sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    margin-bottom: 40px;
-    line-height: 125%;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-align: center;
-    color: #492516;
-}
-
 .section {
-    background: #f2ede0;
-    padding: 40px 0;
-    margin-bottom: 0;
+    margin: 40px auto;
+}
+
+@media (max-width: 760px) {
+    .section {
+        margin: 24px auto;
+    }
 }

@@ -1,4 +1,3 @@
-import ui from "../styles/ui.module.css";
 import styles from "./BestBrands.module.css";
 
 //загорлвок и картинки массивом
@@ -23,9 +22,9 @@ const brands = [
 
 export default function BestBrands() {
   return (
-    <section className={`${ui.ui__section} ${styles.section}`}>
+    <section className={styles.section}>
       <h2 className={styles.title}>мы предлагаем лучшие бренды</h2>
-      <div className={ui.ui__container}>
+      <div className={styles.container}>
         <div className={styles.brands}>
           {brands.map((brand) => (
             <img

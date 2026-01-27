@@ -9,8 +9,8 @@ import WigWamCompany from "../components/WigWamCompany";
 import Bestsellers from "../components/Bestsellers";
 import BestBrands from "../components/BestBrands";
 import NewArrivals from "../components/NewArrivals";
+import AgeGate from "../components/AgeGate";
 import styles from "./page.module.css";
-import ui from "../styles/ui.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -44,9 +44,10 @@ export default async function Home() {
 
   return (
     <div className={styles.home}>
+      <AgeGate />
       <HeroSlider />
 
-      <div className={`${ui.ui__container} ${ui.ui__stack}`}>
+      <div className={`${styles.container} ${styles.stack}`}>
         <ProductSwiper products={newProducts} title="Новинки" />
 
         <section className={styles.section_categories}>

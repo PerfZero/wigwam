@@ -1,5 +1,5 @@
 import { apiUrl } from "../../lib/api";
-import ui from "../../styles/ui.module.css";
+import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -18,11 +18,11 @@ export default async function DocumentsPage() {
   const documents = await getDocuments();
 
   return (
-    <div className={`${ui.ui__container} ${ui.ui__stack}`}>
+    <div className={`${styles.container} ${styles.stack}`}>
       <h1>Документы</h1>
       {documents.length === 0 && <p>Документы еще не добавлены.</p>}
       {documents.map((doc) => (
-        <div key={doc.id} className={ui.ui__card}>
+        <div key={doc.id} className={styles.card}>
           <h3>{doc.title}</h3>
           <p>{doc.body}</p>
         </div>

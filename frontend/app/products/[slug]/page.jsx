@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { apiUrl } from "../../../lib/api";
+import { formatPrice } from "../../../lib/format";
 import PurchaseBlock from "../../../components/PurchaseBlock";
 import ReviewDrawer from "../../../components/ReviewDrawer";
 import ProductGallery from "./ProductGallery";
@@ -140,8 +141,7 @@ export default async function ProductPage({ params }) {
               </ReviewDrawer>
             </div>
             <div className={styles.price}>
-              {" "}
-              <span>₸</span> {product.price}{" "}
+              <span>₸</span> {formatPrice(product.price)}
             </div>
             <PurchaseBlock slug={product.slug} maxQuantity={maxQuantity} />
 

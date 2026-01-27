@@ -1,5 +1,4 @@
 import styles from "./CheckoutProcess.module.css";
-import ui from "../styles/ui.module.css";
 
 export default function CheckoutProcess() {
   //номер, картинка, заголовок, описание
@@ -29,7 +28,7 @@ export default function CheckoutProcess() {
 
   return (
     <section className={styles.section}>
-      <div className={ui.ui__container}>
+      <div className={styles.container}>
         <h2 className={styles.title}>Процесс оформления заказа</h2>
         <ol className={styles.list}>
           {steps.map((step, index) => (

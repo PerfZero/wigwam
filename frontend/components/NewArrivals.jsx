@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { apiUrl } from "../lib/api";
-import ui from "../styles/ui.module.css";
 import styles from "./NewArrivals.module.css";
 
 export default function NewArrivals() {
@@ -12,29 +11,29 @@ export default function NewArrivals() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted, email:', email);
+    console.log("Form submitted, email:", email);
     if (!email) {
-      console.log('No email provided');
+      console.log("No email provided");
       return;
     }
 
     setIsLoading(true);
-    
+
     try {
-      const url = apiUrl('/api/subscribe/');
-      console.log('Making request to:', url);
-      
+      const url = apiUrl("/api/subscribe/");
+      console.log("Making request to:", url);
+
       const response = await fetch(url, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email }),
       });
-      
+
       const data = await response.json();
-      console.log('Response:', response.status, data);
-      
+      console.log("Response:", response.status, data);
+
       if (response.ok) {
         setIsSubscribed(true);
       } else {
@@ -42,13 +41,13 @@ export default function NewArrivals() {
         if (response.status === 409) {
           setIsSubscribed(true);
         } else {
-          console.error('Subscribe error:', data);
-          alert('Ошибка подписки: ' + (data.error || 'Попробуйте позже'));
+          console.error("Subscribe error:", data);
+          alert("Ошибка подписки: " + (data.error || "Попробуйте позже"));
         }
       }
     } catch (error) {
-      console.error('Subscribe error:', error);
-      alert('Ошибка подписки. Попробуйте позже.');
+      console.error("Subscribe error:", error);
+      alert("Ошибка подписки. Попробуйте позже.");
     } finally {
       setIsLoading(false);
     }
@@ -63,7 +62,7 @@ export default function NewArrivals() {
             <p className={styles.description}>
               Переодически мы будем отправлять интересные позиции
             </p>
-            <button 
+            <button
               className={styles.button}
               onClick={() => setIsSubscribed(false)}
             >
@@ -90,8 +89,8 @@ export default function NewArrivals() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className={styles.button}
               disabled={isLoading}
             >

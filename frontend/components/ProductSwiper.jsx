@@ -7,7 +7,6 @@ import "swiper/css/navigation";
 import ProductCard from "./ProductCard";
 import styles from "../app/page.module.css";
 import swiperStyles from "../styles/swiper.module.css";
-import ui from "../styles/ui.module.css";
 
 export default function ProductSwiper({
   products,
@@ -26,7 +25,7 @@ export default function ProductSwiper({
 
   if (!mounted) {
     return (
-      <section className={ui.ui__section}>
+      <section className={swiperStyles.section}>
         <div
           className={`${styles.sectionHead} ${
             isLeft ? styles.sectionHeadLeft : ""
@@ -53,7 +52,7 @@ export default function ProductSwiper({
 
   if (!products || products.length === 0) {
     return (
-      <section className={ui.ui__section}>
+      <section className={swiperStyles.section}>
         <div
           className={`${styles.sectionHead} ${
             isLeft ? styles.sectionHeadLeft : ""
@@ -68,7 +67,7 @@ export default function ProductSwiper({
   }
 
   return (
-    <section className={ui.ui__section}>
+    <section className={swiperStyles.section}>
       <div
         className={`${styles.sectionHead} ${
           isLeft ? styles.sectionHeadLeft : ""

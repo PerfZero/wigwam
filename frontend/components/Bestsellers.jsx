@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { apiUrl } from "../lib/api";
 import ProductSwiper from "./ProductSwiper";
-import ui from "../styles/ui.module.css";
 import styles from "../app/page.module.css";
+import localStyles from "./Bestsellers.module.css";
 
 export default function Bestsellers() {
   const [newProducts, setNewProducts] = useState([]);
@@ -45,7 +45,7 @@ export default function Bestsellers() {
 
   if (loading) {
     return (
-      <section className={ui.ui__section}>
+      <section className={localStyles.section}>
         <div className={styles.sectionHead}>
           <h2 className={styles.sectionTitles}>Бестселлеры</h2>
         </div>
@@ -54,5 +54,11 @@ export default function Bestsellers() {
     );
   }
 
-  return <ProductSwiper products={newProducts} title="Бестселлеры" />;
+  return (
+    <ProductSwiper
+      products={newProducts}
+      title="Бестселлеры"
+      kicker="Выбор постоянных клиентов"
+    />
+  );
 }

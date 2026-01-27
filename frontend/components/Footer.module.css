@@ -3,6 +3,12 @@
     padding: 20px 0;
 }
 
+.container {
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 .footer__inner {
     display: flex;
     flex-direction: column;
@@ -56,6 +62,10 @@
 @media (max-width: 760px) {
     .footer {
         padding: 24px 0;
+    }
+
+    .container {
+        padding: 0 16px;
     }
 
     .footer__links {

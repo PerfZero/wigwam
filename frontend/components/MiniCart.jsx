@@ -6,6 +6,7 @@ import { createPortal } from "react-dom";
 import { useCart } from "../contexts/CartContext";
 import { apiUrl } from "../lib/api";
 import { getCartToken } from "../lib/cart";
+import { formatPrice } from "../lib/format";
 import styles from "./MiniCart.module.css";
 
 export default function MiniCart() {
@@ -67,9 +68,6 @@ export default function MiniCart() {
     (sum, item) => sum + Number(item.product?.price || 0) * item.quantity,
     0,
   );
-
-  const formatPrice = (value) =>
-    new Intl.NumberFormat("ru-RU").format(Number(value) || 0);
 
   return (
     <div className={styles.miniCart} ref={rootRef}>

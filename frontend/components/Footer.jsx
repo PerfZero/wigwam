@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from "./Footer.module.css";
-import ui from "../styles/ui.module.css";
 
 // Пользовательское соглашение
 // Политика конфиденциальности
@@ -11,7 +10,7 @@ import ui from "../styles/ui.module.css";
 export default function Footer() {
   return (
     <div className={styles.footer}>
-      <div className={`${ui.ui__container} ${styles.footer__inner}`}>
+      <div className={`${styles.container} ${styles.footer__inner}`}>
         <div className={styles.footer__links}>
           <Link href="/terms">Пользовательское соглашение</Link>
           <Link href="/privacy">Политика конфиденциальности</Link>

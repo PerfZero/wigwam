@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import ui from "../styles/ui.module.css";
 import styles from "../app/page.module.css";
 
 const slides = [
@@ -89,7 +88,7 @@ export default function HeroSlider() {
           />
         </svg>
       </button>
-      <div className={`${styles.hero__content} ${ui.ui__container}`}>
+      <div className={`${styles.hero__content} ${styles.hero__container}`}>
         <div className={styles.hero__main}>
           <div key={activeIndex} className={styles.hero__textFade}>
             <h1 className={styles.hero__title}>{activeSlide.title}</h1>
@@ -103,10 +102,7 @@ export default function HeroSlider() {
             </p>
           </div>
           <div className={styles.hero__actions}>
-            <Link
-              className={`${ui.ui__button} ${styles.hero__button}`}
-              href="/categories"
-            >
+            <Link className={styles.hero__button} href="/categories">
               Перейти к каталогу
             </Link>
           </div>
